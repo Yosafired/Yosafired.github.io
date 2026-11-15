@@ -7,7 +7,7 @@
 <meta name="description" content="Roblox developer for hire: Luau scripting, game systems, maps, UI and VFX.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#08070a; --panel:#121015; --panel2:#18151c; --line:#2a2430;
@@ -32,7 +32,7 @@
   /* hero */
   .hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:60px 0}
   .tag{color:var(--red2);letter-spacing:.3em;text-transform:uppercase;font-size:13px;margin-bottom:18px}
-  h1{font-family:Cinzel,serif;font-weight:800;font-size:clamp(44px,9vw,96px);line-height:1;letter-spacing:.04em;text-shadow:0 0 40px rgba(196,32,58,.35)}
+  h1{font-family:Cinzel,serif;font-weight:800;font-size:clamp(36px,6.5vw,66px);line-height:1;letter-spacing:.04em;text-shadow:0 0 40px rgba(196,32,58,.35)}
   .hero p.lead{font-size:clamp(17px,2.4vw,21px);color:var(--muted);max-width:560px;margin:22px 0 34px}
   .hero p.lead b{color:var(--text);font-weight:500}
   .hero p.lead b.magic{font-weight:700;background:linear-gradient(90deg,var(--text),var(--red2),#ffb36b,var(--red2),var(--text));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
@@ -109,6 +109,54 @@
   .assets{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
   .note{margin-top:22px;padding:16px 20px;border-left:3px solid var(--red);background:var(--panel2);color:var(--muted);font-size:15px}
 
+  /* language button + Thai text */
+  .lang{background:none;border:1px solid var(--red);color:var(--text);font:700 12px Inter,sans-serif;letter-spacing:.1em;padding:5px 9px;cursor:pointer;transition:all .2s}
+  .lang:hover{background:var(--red);box-shadow:0 0 12px rgba(255,61,90,.5)}
+  html[lang=th] body{font-family:Inter,Prompt,system-ui,sans-serif}
+  html[lang=th] h2,html[lang=th] h3,html[lang=th] .btn,html[lang=th] .num,html[lang=th] .tag,html[lang=th] .amt,html[lang=th] .rows b,html[lang=th] .stats b,html[lang=th] .hero-stats b,html[lang=th] .genres span{font-family:Cinzel,Prompt,serif}
+  html[lang=th] .tag,html[lang=th] .num,html[lang=th] .btn,html[lang=th] nav ul a,html[lang=th] .status,html[lang=th] .stats span,html[lang=th] .hero-stats span,html[lang=th] .pay,html[lang=th] h2,html[lang=th] h3{letter-spacing:.02em}
+  html[lang=th] .solo em,html[lang=th] .rows span em{font-style:normal}
+
+  .clip-tag{margin-bottom:8px}
+  .clip[hidden]{display:none}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:-16px 0 24px}
+  .filters button{background:var(--panel);border:1px solid var(--line);color:var(--muted);font:500 13px Inter,Prompt,sans-serif;padding:7px 14px;cursor:pointer;transition:all .2s}
+  .filters button:hover{color:var(--text);border-color:var(--red)}
+  .filters button.on{background:var(--red);border-color:var(--red);color:#fff}
+  .genres-label{margin:34px 0 12px;color:var(--muted);font-size:13px;letter-spacing:.15em;text-transform:uppercase}
+  html[lang=th] .genres-label{letter-spacing:.02em}
+  .credit{margin-top:22px;color:var(--muted);font-size:13px;font-style:italic}
+  html[lang=th] .credit{font-style:normal}
+
+  /* prices */
+  .prices{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+  .paybox{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:-14px 0 26px;padding:14px 16px;border:1px solid var(--red);background:linear-gradient(90deg,rgba(196,32,58,.14),transparent)}
+  .paylabel{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red2);margin-right:6px}
+  html[lang=th] .paylabel{letter-spacing:.02em;font-size:14px}
+  .paychip{display:inline-flex;flex-direction:column;padding:6px 14px;background:var(--panel2);border:1px solid var(--line)}
+  .paychip b{font-family:Cinzel,Prompt,serif;font-size:17px;color:var(--text)}
+  .paychip small{font-size:12px;color:var(--muted)}
+  .pay b{color:var(--text)}
+  .legend{color:var(--muted);font-size:14px;margin:-18px 0 26px}
+  .tag-make,.tag-wire{display:inline-block;font-style:normal;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;margin-right:8px;vertical-align:2px;border:1px solid}
+  .tag-make{color:var(--red2);border-color:var(--red)}
+  .tag-wire{color:#7fb6ff;border-color:#36557d}
+  .rows{list-style:none;margin-top:12px}
+  .rows li{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:12px 0;border-top:1px solid var(--line)}
+  .rows li:first-child{border-top:0}
+  .rows span{color:var(--muted);font-size:14px;line-height:1.5}
+  .rows span em{display:block;font-style:normal;color:#ffb36b;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+  .rows b{font-family:Cinzel,serif;font-size:19px;color:var(--text);text-align:right;white-space:nowrap}
+  .rows b small{display:block;font-family:Inter,sans-serif;font-size:12px;font-weight:500;color:var(--red2)}
+  .rows li.deal b{color:#ffb36b}
+  .price .hint{font-size:13px;margin-top:6px;color:var(--muted)}
+  .price h3{margin-top:0}
+  .price p{min-height:24px}
+  .price .from{margin-top:14px;color:var(--muted);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+  .price .amt{font-family:Cinzel,serif;font-size:30px;font-weight:800;color:var(--text);line-height:1.2}
+  .price .rbx{color:var(--red2);font-size:14px;font-weight:500}
+  .price.big .amt{font-size:22px;margin-top:14px;color:var(--red2)}
+
   /* contact */
   .contact{text-align:center;border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--bg));padding:60px 24px}
   .contact h2{margin-bottom:12px}
@@ -119,8 +167,49 @@
 
   footer{padding:40px 0;text-align:center;color:var(--muted);font-size:13px;letter-spacing:.1em}
 
+  /* ===== magic tricks ===== */
+  /* name: letters rise in one by one, then a candle-like glow flicker */
+  h1 .ch{display:inline-block;opacity:0;transform:translateY(40px) rotateX(70deg);filter:blur(6px);animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none;filter:none}}
+  h1.lit{animation:flicker 5s infinite}
+  @keyframes flicker{0%,100%{text-shadow:0 0 40px rgba(196,32,58,.35)}45%{text-shadow:0 0 40px rgba(196,32,58,.35)}48%{text-shadow:0 0 60px rgba(255,61,90,.7),0 0 10px rgba(255,179,107,.5)}50%{text-shadow:0 0 30px rgba(196,32,58,.25)}53%{text-shadow:0 0 70px rgba(255,61,90,.8),0 0 14px rgba(255,179,107,.6)}58%{text-shadow:0 0 40px rgba(196,32,58,.35)}}
+
+  /* headings: a red line draws in under them */
+  h2{position:relative;display:inline-block;padding-bottom:6px}
+  h2::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,var(--red2),transparent);transition:width 1s .3s ease}
+  .reveal.in h2::after{width:100%}
+  h2 + .sub{display:block}
+
+  /* cards: appear one after another */
+  .reveal .card,.reveal .clip,.reveal .game,.reveal .genres span{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease,border-color .25s}
+  .reveal.in .card,.reveal.in .clip,.reveal.in .game,.reveal.in .genres span{opacity:1;transform:none}
+
+  /* buttons: light sweep on hover */
+  .btn{position:relative;overflow:hidden}
+  .btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .6s}
+  .btn:hover::after{left:130%}
+
+  /* 3D tilt (desktop) */
+  .tilt{transform-style:preserve-3d;will-change:transform}
+  .tilt-glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,61,90,.18),transparent 55%);opacity:0;transition:opacity .3s}
+  .tilt:hover .tilt-glare{opacity:1}
+  .card,.clip,.game{position:relative}
+
+  /* status light pulse */
+  .status i{animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 10px #3ddc84}50%{box-shadow:0 0 2px #3ddc84,0 0 18px 4px rgba(61,220,132,.35)}}
+
+  /* magic sparks that follow the cursor / finger tap */
+  .spark{position:fixed;z-index:50;pointer-events:none;width:6px;height:6px;border-radius:50%;background:#ffb36b;box-shadow:0 0 8px #ff3d5a,0 0 14px #ff3d5a;animation:spark .8s ease-out forwards}
+  @keyframes spark{to{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
+
+  /* scroll progress bar */
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:20;background:linear-gradient(90deg,var(--red),var(--red2),#ffb36b);box-shadow:0 0 8px var(--red2)}
+
   @media (max-width:640px){
-    nav ul{gap:14px}
+    nav ul{gap:12px}
+    nav ul a{font-size:12px;letter-spacing:.05em}
+    .logo{font-size:16px;letter-spacing:.08em}
     nav ul li.hide-sm{display:none}
     section{padding:60px 0}
     .hero{min-height:80vh}
@@ -128,22 +217,28 @@
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;transition:none}
     .hero p.lead b.magic{animation:none}
+    h1 .ch{animation:none;opacity:1;transform:none;filter:none}
+    h1.lit,.status i{animation:none}
+    .reveal .card,.reveal .clip,.reveal .game,.reveal .genres span{opacity:1;transform:none;transition:none}
+    .spark{display:none}
     canvas#embers{display:none}
   }
 </style>
 </head>
 <body>
 <canvas id="embers"></canvas>
+<div id="progress"></div>
 
 <nav>
   <div class="wrap">
     <a class="logo" href="#top">YOSA<span>FIRED</span></a>
     <ul>
-      <li class="hide-sm"><a href="#skills">Skills</a></li>
-      <li class="hide-sm"><a href="#games">Games</a></li>
-      <li><a href="#work">Work</a></li>
-      <li class="hide-sm"><a href="#assets">Assets</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li class="hide-sm"><a href="#games" data-th="เกม">Games</a></li>
+      <li class="hide-sm"><a href="#skills" data-th="ความสามารถ">Skills</a></li>
+      <li><a href="#work" data-th="ผลงาน">Work</a></li>
+      <li><a href="#prices" data-th="ราคา">Prices</a></li>
+      <li><a href="#contact" data-th="ติดต่อ">Contact</a></li>
+      <li><button class="lang" id="langBtn" aria-label="Switch language">TH</button></li>
     </ul>
   </div>
 </nav>
@@ -151,73 +246,41 @@
 <main class="wrap" id="top">
 
   <header class="hero">
-    <div class="tag">Roblox Developer &middot; Game Magician</div>
+    <div class="tag" data-th="Roblox Developer &middot; นักเวทย์สายเกม">Roblox Developer &middot; Game Magician</div>
     <h1>YOSAFIRED</h1>
-    <p class="lead">I don't just make games run. <b class="magic">I make them feel alive.</b><br>Luau scripting, game systems, maps, UI and VFX for Roblox.</p>
-    <div class="solo">
+    <p class="lead" data-th="เกมรันได้น่ะธรรมดา <b class='magic'>ผมทำให้เกมมีชีวิต!</b><br>สคริปต์ Luau ระบบเกม แมพ UI VFX บน Roblox จัดให้ครบ">I don't just make games run. <b class="magic">I make them feel alive.</b><br>Luau scripting, game systems, maps, UI and VFX for Roblox.</p>
+    <div class="solo" data-th="<b>Dev เดี่ยว ลุยมา 5 ปีกว่า</b> ร่วมงานมาหลายทีมแล้ว เกมนึงทำเองได้แทบทุกส่วน ระดับกลางแบบแน่นๆ ทั้งสคริปต์ ระบบ UI VFX แมพ <span>ทำได้หมด ยกเว้นแอนิเมชัน (อันนี้ขอผ่าน ฮ่า)</span><em>แอบบอก: ชอบเกมที่มีเรื่องราวให้ขุด ยิ่งโลกลึก ยิ่งสนุกตอนทำ</em>">
       <b>Solo developer with 5+ years of experience</b>, working with many teams along the way. I can build almost every part of a game myself, at a solid intermediate level: scripting, systems, UI, VFX and maps. <span>Everything except animation.</span>
       <em>Favourite kind of project: games with deep lore and a real story.</em>
     </div>
     <div class="btns">
-      <a class="btn main" href="#contact">Hire me</a>
-      <a class="btn" href="#work">See work</a>
+      <a class="btn main" href="#contact" data-th="จ้างเลย!">Hire me</a>
+      <a class="btn" href="#work" data-th="ส่องผลงาน">See work</a>
     </div>
     <div class="hero-stats">
-      <div><b>5+</b><span>Years experience</span></div>
-      <div><b>13M+</b><span>Visits on my games</span></div>
-      <div><b>Many</b><span>Teams worked with</span></div>
+      <div><b>5+</b><span data-th="ปีประสบการณ์">Years experience</span></div>
+      <div><b>13M+</b><span data-th="ยอดเข้าเล่นเกมที่เคยทำ">Visits on my games</span></div>
+      <div><b data-th="เพียบ">Many</b><span data-th="ทีมที่เคยร่วมงาน">Teams worked with</span></div>
     </div>
-    <div class="status"><i></i>Commissions open</div>
+    <div class="status" data-th="<i></i>ว่างรับงานอยู่นะ"><i></i>Commissions open</div>
   </header>
 
-  <section id="skills" class="reveal">
-    <h2>What I Do</h2>
-    <p class="sub">From one system to a whole update. I adapt fast to any project and team style.</p>
-    <div class="grid">
-      <div class="card"><div class="num">01</div><h3>Scripting</h3><p>Almost any system your game needs: combat, skills, leveling, quests, inventory, shops, DataStore saving, anti-exploit, NPC dialogue, and more.</p></div>
-      <div class="card"><div class="num">02</div><h3>Maps</h3><p>Building new maps and interiors, or plugging in your own and connecting them to the game. Built to run well on mobile.</p></div>
-      <div class="card"><div class="num">03</div><h3>UI</h3><p>Basic UI design: menus, shops, inventories and HUDs, wired up and working.</p></div>
-      <div class="card"><div class="num">04</div><h3>VFX</h3><p>Basic combat VFX: slashes, hits, auras and bursts that fit your game's style.</p></div>
-    </div>
-  </section>
-
-  <section id="how" class="reveal">
-    <h2>How I Work</h2>
-    <p class="sub">Clean, safe and fast code that your team can pick up and keep building on.</p>
-    <div class="grid">
-      <div class="card"><div class="num">Optimized</div><h3>Runs on Mobile</h3><p>Low part counts, lights and particles kept in check, heavy areas loaded only when needed, and streaming set up properly. Built for phones first, not just a strong PC.</p></div>
-      <div class="card"><div class="num">Secure</div><h3>Server Decides</h3><p>Rewards, cooldowns and damage are checked on the server. Cooldowns are saved in player data, so leaving and rejoining can't be used to farm.</p></div>
-      <div class="card"><div class="num">Organised</div><h3>Easy to Work With</h3><p>ModuleScripts with clear APIs, config tables for every tuning value, and tidy folders for remotes and services. Your next dev won't get lost.</p></div>
-      <div class="card"><div class="num">Documented</div><h3>Nothing Lives in My Head</h3><p>Every system gets short notes: where the scripts are, how they connect, and why it was built that way. Handover is painless.</p></div>
-      <div class="card"><div class="num">Tested</div><h3>Proven in Play</h3><p>Systems are tested in real Play sessions, not just in theory. Dev commands and test hooks make bugs quick to reproduce and fix.</p></div>
-      <div class="card"><div class="num">Teamwork</div><h3>Ask Before Changing</h3><p>I never overwrite your work. Big changes are agreed first, progress is tracked in tasks, and you get screenshots or clips along the way.</p></div>
-    </div>
-  </section>
-
-  <section id="genres" class="reveal">
-    <h2>Genres</h2>
-    <p class="sub">Experience across the genres that keep Roblox busy.</p>
-    <div class="genres">
-      <span>Simulator</span><span>Fighting</span><span>Tycoon</span><span>Tower Defense</span><span>RPG</span><span>&amp; more</span>
-    </div>
-  </section>
-
   <section id="games" class="reveal">
-    <h2>Released Games</h2>
-    <p class="sub">Live on Roblox: <b style="color:var(--text)">13M+ visits</b> across games I've worked on.</p>
+    <h2 data-th="เกมที่ได้ไปเฉิดฉายแล้ว">Released Games</h2>
+    <p class="sub" data-th="เกมที่เคยร่วมทำ มีคนเข้าเล่นรวมกันกว่า <b style='color:var(--text)'>13 ล้านครั้ง</b> แล้ว">Live on Roblox: <b style="color:var(--text)">13M+ visits</b> across games I've worked on.</p>
     <a class="game" href="https://www.roblox.com/games/130169555191153/Universal-piece" target="_blank" rel="noopener">
       <div class="game-img"><img src="https://tr.rbxcdn.com/180DAY-3f518dadb9a7c20b1956e613880bb1a9/500/280/Image/Jpeg/noFilter" alt="Universal Piece thumbnail" loading="lazy"></div>
       <div class="game-info">
-        <div class="num">Action RPG &middot; Team project</div>
+        <div class="num" data-th="Action RPG &middot; งานทีม">Action RPG &middot; Team project</div>
         <h3>Universal Piece</h3>
-        <p>Sail a huge sea, take on quests and missions, and battle powerful bosses for loot. Playable on PC, mobile and console.</p>
+        <p data-th="ล่องเรือทะเลกว้าง รับเควส ทำภารกิจ ตีบอสเอาของ เล่นได้ทั้ง PC มือถือ คอนโซล">Sail a huge sea, take on quests and missions, and battle powerful bosses for loot. Playable on PC, mobile and console.</p>
         <div class="stats">
-          <div><b>9.2M+</b><span>Visits</span></div>
-          <div><b>32K+</b><span>Favorites</span></div>
+          <div><b>9.2M+</b><span data-th="ยอดเข้าเล่น">Visits</span></div>
+          <div><b>32K+</b><span data-th="รายการโปรด">Favorites</span></div>
           <div><b>Lead</b><span>Frontend</span></div>
         </div>
-        <p class="role">Former Lead Frontend Developer. Scripted skill VFX and combat hitboxes, and fixed bugs across the client and backend when the team needed it.</p>
-        <span class="play">Play on Roblox &rarr;</span>
+        <p class="role" data-th="เคยเป็น Lead Frontend ดูแลสคริปต์ VFX สกิลกับฮิตบ็อกซ์ตอนต่อสู้ ทีมเจอบั๊กตรงไหน ทั้ง client ทั้ง backend ก็เข้าไปช่วยเคลียร์">Former Lead Frontend Developer. Scripted skill VFX and combat hitboxes, and fixed bugs across the client and backend when the team needed it.</p>
+        <span class="play" data-th="ไปลองเล่น &rarr;">Play on Roblox &rarr;</span>
       </div>
     </a>
     <a class="game" href="https://www.roblox.com/games/88144122498773/Creature-World" target="_blank" rel="noopener">
@@ -225,57 +288,143 @@
       <div class="game-info">
         <div class="num">Incremental Simulator</div>
         <h3>Creature World</h3>
-        <p>Start as a tiny creature, collect food to grow, roll for creatures with unique stats, hunt limited animals and runes, and climb the leaderboards.</p>
+        <p data-th="เริ่มจากตัวจิ๋ว กินๆ เก็บๆ จนตัวโต สุ่มสัตว์ค่าพลังไม่ซ้ำ ล่าสัตว์ลิมิเต็ดกับรูน แล้วปีนอันดับลีดเดอร์บอร์ด">Start as a tiny creature, collect food to grow, roll for creatures with unique stats, hunt limited animals and runes, and climb the leaderboards.</p>
         <div class="stats">
-          <div><b>1.8M+</b><span>Visits</span></div>
-          <div><b>5.6K+</b><span>Favorites</span></div>
+          <div><b>1.8M+</b><span data-th="ยอดเข้าเล่น">Visits</span></div>
+          <div><b>5.6K+</b><span data-th="รายการโปรด">Favorites</span></div>
           <div><b>Solo</b><span>Scripter</span></div>
         </div>
-        <p class="role">Every system scripted by me, alone.</p>
-        <span class="play">Play on Roblox &rarr;</span>
+        <p class="role" data-th="ทุกระบบในเกมนี้ ผมเขียนเองคนเดียวทั้งหมด">Every system scripted by me, alone.</p>
+        <span class="play" data-th="ไปลองเล่น &rarr;">Play on Roblox &rarr;</span>
       </div>
     </a>
     <a class="game" href="https://www.roblox.com/games/88066796152438/XIN-TOWN-OFFICIAL" target="_blank" rel="noopener">
       <div class="game-img"><img src="https://tr.rbxcdn.com/180DAY-a041334b0af283092b7e9cf81594127e/500/280/Image/Jpeg/noFilter" alt="XIN TOWN thumbnail" loading="lazy"></div>
       <div class="game-info">
-        <div class="num">Life Roleplay &middot; Team project</div>
+        <div class="num" data-th="Life Roleplay &middot; งานทีม">Life Roleplay &middot; Team project</div>
         <h3>XIN TOWN</h3>
-        <p>A FiveM-inspired town roleplay game with 100-player servers. Still live and active today.</p>
+        <p data-th="เกมโรลเพลย์เมืองฟีล FiveM เซิร์ฟละ 100 คน ผ่านมาหลายปียังมีคนเล่นอยู่เลย">A FiveM-inspired town roleplay game with 100-player servers. Still live and active today.</p>
         <div class="stats">
-          <div><b>2.8M+</b><span>Visits</span></div>
-          <div><b>100</b><span>Player servers</span></div>
+          <div><b>2.8M+</b><span data-th="ยอดเข้าเล่น">Visits</span></div>
+          <div><b>100</b><span data-th="คนต่อเซิร์ฟ">Player servers</span></div>
           <div><b>Full</b><span>Stack</span></div>
         </div>
-        <p class="role">Former Frontend &amp; Backend Developer. Built the carry system, minigames, live events and life skills, client and server, for a game still running years later.</p>
-        <span class="play">Play on Roblox &rarr;</span>
+        <p class="role" data-th="เคยทำทั้ง Frontend และ Backend ปั้นระบบอุ้ม มินิเกม อีเวนต์ และ life skill ทั้งฝั่ง client และ server">Former Frontend &amp; Backend Developer. Built the carry system, minigames, live events and life skills, client and server, for a game still running years later.</p>
+        <span class="play" data-th="ไปลองเล่น &rarr;">Play on Roblox &rarr;</span>
       </div>
     </a>
   </section>
 
   <section id="work" class="reveal">
-    <h2>Some of My Works</h2>
-    <p class="sub">A small selection of systems and effects. Plenty more I can't show publicly, so ask if you need something specific.</p>
+    <h2 data-th="ผลงานบางส่วน">Some of My Works</h2>
+    <p class="sub" data-th="หยิบมาโชว์แค่บางส่วน ที่เหลืออีกเยอะเปิดให้ดูสาธารณะไม่ได้ อยากดูแบบไหนทักมาเลย">A small selection of systems and effects. Plenty more I can't show publicly, so ask if you need something specific.</p>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all" data-th="ทั้งหมด">All</button>
+      <button data-f="make" data-th="ทำเอง">Make</button>
+      <button data-f="wire" data-th="เชื่อมระบบ">Wire up</button>
+      <button data-f="ui">UI</button>
+      <button data-f="combat" data-th="ต่อสู้ + VFX">Combat + VFX</button>
+      <button data-f="systems" data-th="ระบบ">Systems</button>
+    </div>
     <div class="work" id="workGrid"></div>
+    <p class="credit" data-th="เครดิต: โมเดลและแอนิเมชันในบางคลิป เป็นฝีมือเพื่อนๆ ที่ทำงานด้วยกัน">Credit: models and animations in some clips are by friends I work with.</p>
+  </section>
+
+  <section id="skills" class="reveal">
+    <h2 data-th="รับทำอะไรบ้าง">What I Do</h2>
+    <p class="sub" data-th="ระบบเดียวก็รับ ทั้งอัปเดตก็เอา เข้ากับทีมไหนก็ปรับตัวไว">From one system to a whole update. I adapt fast to any project and team style.</p>
+    <div class="grid">
+      <div class="card"><div class="num">01</div><h3 data-th="สคริปต์">Scripting</h3><p data-th="เกมอยากได้ระบบไหน ส่วนใหญ่ทำได้หมด: ต่อสู้ สกิล เลเวล เควส กระเป๋า ร้านค้า เซฟ DataStore กันโกง คุยกับ NPC และอีกเพียบ">Almost any system your game needs: combat, skills, leveling, quests, inventory, shops, DataStore saving, anti-exploit, NPC dialogue, and more.</p></div>
+      <div class="card"><div class="num">02</div><h3 data-th="แมพ">Maps</h3><p data-th="สร้างแมพกับในตึกใหม่ หรือเอาแมพที่มีอยู่มาเสียบเข้าเกมให้ มือถือเล่นลื่นไม่กระตุก">Building new maps and interiors, or plugging in your own and connecting them to the game. Built to run well on mobile.</p></div>
+      <div class="card"><div class="num">03</div><h3>UI</h3><p data-th="UI ระดับพื้นฐาน: เมนู ร้านค้า กระเป๋า HUD กดได้ใช้ได้จริง ไม่ใช่แค่รูปสวยๆ">Basic UI design: menus, shops, inventories and HUDs, wired up and working.</p></div>
+      <div class="card"><div class="num">04</div><h3>VFX</h3><p data-th="VFX ต่อสู้พื้นฐาน: ฟัน ฮิต ออร่า ระเบิดตูม ปรับให้เข้ากับสไตล์เกมคุณ">Basic combat VFX: slashes, hits, auras and bursts that fit your game's style.</p></div>
+    </div>
+    <p class="genres-label" data-th="แนวเกมที่เคยทำ">Genres I've worked on</p>
+    <div class="genres">
+      <span>Simulator</span><span>Fighting</span><span>Tycoon</span><span>Tower Defense</span><span>RPG</span><span data-th="และอีกเพียบ">&amp; more</span>
+    </div>
+  </section>
+
+  <section id="how" class="reveal">
+    <h2 data-th="ทำงานแบบไหน">How I Work</h2>
+    <p class="sub" data-th="โค้ดสะอาด ปลอดภัย เร็ว ใครมารับช่วงต่อก็ไม่ปวดหัว">Clean, safe and fast code that your team can pick up and keep building on.</p>
+    <div class="grid">
+      <div class="card"><div class="num" data-th="ลื่น">Optimized</div><h3 data-th="มือถือก็ลื่น">Runs on Mobile</h3><p data-th="คุมพาร์ท แสง พาร์ทิเคิลไม่ให้บวม ส่วนหนักๆ โหลดตอนจำเป็น ตั้ง streaming ถูกต้อง คิดถึงคนเล่นมือถือก่อน ไม่ใช่แค่คนคอมแรง">Low part counts, lights and particles kept in check, heavy areas loaded only when needed, and streaming set up properly. Built for phones first, not just a strong PC.</p></div>
+      <div class="card"><div class="num" data-th="ปลอดภัย">Secure</div><h3 data-th="เซิร์ฟเวอร์เป็นคนตัดสิน">Server Decides</h3><p data-th="รางวัล คูลดาวน์ ดาเมจ เช็กฝั่งเซิร์ฟหมด คนโกงเนียนยาก ระบบไม่พังง่ายๆ">Rewards, cooldowns and damage are all checked on the server, so exploiters have a hard time breaking your game.</p></div>
+      <div class="card"><div class="num" data-th="เป็นระเบียบ">Organised</div><h3 data-th="ทำงานด้วยง่าย">Easy to Work With</h3><p data-th="ModuleScript แยกชัด API อ่านรู้เรื่อง ค่าปรับได้รวมไว้ใน config โฟลเดอร์ remote กับ service เป็นระเบียบ dev คนต่อไปไม่หลงทาง">ModuleScripts with clear APIs, config tables for every tuning value, and tidy folders for remotes and services. Your next dev won't get lost.</p></div>
+      <div class="card"><div class="num" data-th="มีเอกสาร">Documented</div><h3 data-th="ไม่เก็บไว้ในหัวคนเดียว">Nothing Lives in My Head</h3><p data-th="ทุกระบบมีโน้ตสั้นๆ ว่าสคริปต์อยู่ไหน ต่อกันยังไง ทำไมทำแบบนี้ ส่งต่องานสบายๆ">Every system gets short notes: where the scripts are, how they connect, and why it was built that way. Handover is painless.</p></div>
+      <div class="card"><div class="num" data-th="ทดสอบจริง">Tested</div><h3 data-th="เทสในเกมจริง">Proven in Play</h3><p data-th="กด Play เทสจริงทุกครั้ง ไม่ใช่แค่ “น่าจะได้” มีคำสั่ง dev กับ test hook ไว้ไล่จับบั๊กไวๆ">Systems are tested in real Play sessions, not just in theory. Dev commands and test hooks make bugs quick to reproduce and fix.</p></div>
+      <div class="card"><div class="num" data-th="ทำงานเป็นทีม">Teamwork</div><h3 data-th="ถามก่อนแก้เสมอ">Ask Before Changing</h3><p data-th="ไม่ทับงานใครแน่นอน จะแก้อะไรใหญ่ๆ คุยกันก่อน แบ่งงานเป็น task ชัดๆ แล้วส่งรูปส่งคลิปให้ดูเรื่อยๆ">I never overwrite your work. Big changes are agreed first, progress is tracked in tasks, and you get screenshots or clips along the way.</p></div>
+    </div>
   </section>
 
   <section id="assets" class="reveal">
-    <h2>Your Assets, or Mine</h2>
-    <p class="sub">No modeler or UI designer on your team? No problem.</p>
+    <h2 data-th="มี asset แล้ว หรือให้ผมทำ?">Your Assets, or Mine</h2>
+    <p class="sub" data-th="ทีมไม่มีโมเดลเลอร์ ไม่มีคนทำ UI? ไม่ต้องห่วง">No modeler or UI designer on your team? No problem.</p>
     <div class="assets">
-      <div class="card"><h3>You have assets</h3><p>Send your maps, models or UI. I plug them in and connect them to the game's systems.</p></div>
-      <div class="card"><h3>You don't</h3><p>I make them for you, as quick placeholders or as decent-looking, ready-to-use pieces.</p></div>
+      <div class="card"><h3 data-th="มีของอยู่แล้ว">You have assets</h3><p data-th="ส่งแมพ โมเดล UI มาได้เลย เดี๋ยวผมเสียบเข้าเกมแล้วต่อระบบให้">Send your maps, models or UI. I plug them in and connect them to the game's systems.</p></div>
+      <div class="card"><h3 data-th="ยังไม่มีเลย">You don't</h3><p data-th="ผมทำให้ ทั้งแบบขัดตาทัพ (placeholder) ไปก่อน หรือแบบดูดีพร้อมใช้เลยก็ได้">I make them for you, as quick placeholders or as decent-looking, ready-to-use pieces.</p></div>
     </div>
-    <div class="note">The final look depends on the assets provided. If none are provided, I can make basic ones to get you started.</div>
+    <div class="note" data-th="หน้าตาสุดท้ายขึ้นอยู่กับ asset ที่ได้มา ถ้าไม่มี เดี๋ยวผมทำแบบพื้นฐานให้เริ่มไปก่อน">The final look depends on the assets provided. If none are provided, I can make basic ones to get you started.</div>
+  </section>
+
+  <section id="prices" class="reveal">
+    <h2 data-th="ราคา">Prices</h2>
+    <p class="sub" data-th="ราคาเป็นมิตร งบไหนก็คุยได้ ตกลงราคากันให้ชัดก่อนเริ่มทุกครั้ง">Friendly prices for every budget. We agree on the final price before I start.</p>
+    <div class="paybox">
+      <span class="paylabel" data-th="รับชำระ">Payment</span>
+      <span class="paychip"><b>฿ THB</b><small data-th="โอนธนาคาร / พร้อมเพย์">Bank transfer / PromptPay</small></span>
+      <span class="paychip"><b>R$ Robux</b><small>Group payout</small></span>
+    </div>
+    <div class="legend" data-th="<span class='tag-make'>ทำให้</span> ผมปั้นขึ้นมาใหม่หมด &nbsp;&middot;&nbsp; <span class='tag-wire'>เชื่อมระบบ</span> คุณมีของแล้ว ผมต่อเข้าเกมให้"><span class="tag-make">Make</span> I create it from scratch &nbsp;&middot;&nbsp; <span class="tag-wire">Wire up</span> you give the asset, I connect it to the game</div>
+    <div class="prices">
+      <div class="card price">
+        <h3>VFX</h3>
+        <ul class="rows">
+          <li><span data-th="<i class='tag-wire'>เชื่อมระบบ</i>ใส่ VFX ของคุณเข้ากับสกิล"><i class="tag-wire">Wire up</i>Your VFX into a skill</span><b>50 ฿<small>200 R$</small></b></li>
+          <li><span data-th="<i class='tag-make'>ทำให้</i>เอฟเฟกต์ M1 / ฮิตเล็กๆ"><i class="tag-make">Make</i>Small M1 / hit effect</span><b>50&ndash;100 ฿<small>200&ndash;350 R$</small></b></li>
+          <li><span data-th="<i class='tag-make'>ทำให้</i>เอฟเฟกต์สกิล"><i class="tag-make">Make</i>Skill effect</span><b>150 ฿<small>500 R$</small></b></li>
+        </ul>
+      </div>
+      <div class="card price">
+        <h3>UI</h3>
+        <ul class="rows">
+          <li><span data-th="<i class='tag-make'>ทำให้</i>1 เฟรม / หน้าต่าง"><i class="tag-make">Make</i>One frame / window</span><b>350&ndash;500 ฿<small>1,200&ndash;1,750 R$</small></b></li>
+          <li class="deal"><span data-th="<i class='tag-make'>ทำให้</i>UI ทั้งชุด ทุกหน้า<em>ราคาแพ็กเกจ ลดพิเศษ</em>"><i class="tag-make">Make</i>Full UI package, all pages<em>Package discount</em></span><b>2,000&ndash;3,000 ฿<small>7,000&ndash;10,000 R$</small></b></li>
+        </ul>
+      </div>
+      <div class="card price">
+        <h3 data-th="ระบบเกม">Game Systems</h3>
+        <ul class="rows">
+          <li><span data-th="<i class='tag-make'>ทำให้</i>ระบบอะไรก็ได้: ร้านค้า กระเป๋า เควส เซฟข้อมูล&hellip;"><i class="tag-make">Make</i>Any system: shop, inventory, quests, saving&hellip;</span><b data-th="เริ่ม 150 ฿<small>เริ่ม 500 R$</small>">from 150 ฿<small>from 500 R$</small></b></li>
+        </ul>
+        <p class="hint" data-th="ยากแค่ไหน ราคาก็ขยับตามนั้น งบน้อยก็ทักมาก่อนเลย ไม่กัด เดี๋ยวหาทางที่พอดีงบให้">Price scales with difficulty. Small budget? DM me anyway, we'll find something that fits.</p>
+      </div>
+      <div class="card price">
+        <h3 data-th="แมพ">Maps</h3>
+        <ul class="rows">
+          <li><span data-th="<i class='tag-wire'>เชื่อมระบบ</i>แมพ + asset ของคุณ: ทางเดิน NPC จุดเกิด"><i class="tag-wire">Wire up</i>Your map + assets: paths, NPCs, spawns</span><b data-th="เริ่ม 1,000 ฿<small>เริ่ม 3,500 R$</small>">from 1,000 ฿<small>from 3,500 R$</small></b></li>
+        </ul>
+      </div>
+      <div class="card price">
+        <h3 data-th="แก้บั๊ก">Bug Fixes</h3>
+        <ul class="rows">
+          <li><span data-th="แก้บั๊ก หรือสคริปต์เล็กๆ">Fix a bug or small script</span><b data-th="เริ่ม 150 ฿<small>เริ่ม 500 R$</small>">from 150 ฿<small>from 500 R$</small></b></li>
+        </ul>
+      </div>
+      <div class="card price big"><h3 data-th="ทั้งเกม / อัปเดตใหญ่">Full Game / Big Update</h3><p data-th="หลายระบบ แมพ และ UI รวมกัน">Several systems, maps and UI together</p><div class="amt" data-th="ทักมาคุยราคา">DM for quote</div></div>
+    </div>
+    <div class="note" data-th="มัดจำ 50% ก่อนเริ่ม ที่เหลือจ่ายตอนส่งงาน งานใหญ่แบ่งจ่ายเป็นช่วงได้ จ่ายผ่านโอนธนาคาร / พร้อมเพย์ หรือ Robux (group payout) ก็ได้">50% upfront, the rest on delivery. Big jobs can be paid per part. Payment by Thai bank transfer / PromptPay, or Robux (group payout).</div>
   </section>
 
   <section id="contact" class="reveal">
     <div class="contact">
-      <h2>Let's Talk</h2>
-      <p>Tell me about your game. Serious offers get a fast reply.</p>
+      <h2 data-th="มาคุยกัน!">Let's Talk</h2>
+      <p data-th="เล่าเกมของคุณให้ฟังหน่อย ทักมาตอบไวแน่นอน">Tell me about your game. Serious offers get a fast reply.</p>
       <div class="discord"><span id="discordName">silence5480</span></div><br>
-      <button class="btn main" id="copyBtn">Copy Discord</button>
+      <button class="btn main" id="copyBtn" data-th="คัดลอก Discord">Copy Discord</button>
       <div class="copied" id="copied"></div>
-      <div class="pay">Robux &middot; USD &middot; THB &middot; DM for price</div>
+      <div class="pay" data-th="รับชำระเป็น <b>บาท</b> หรือ <b>Robux</b> เท่านั้น">Payment in <b>THB</b> or <b>Robux</b> only</div>
     </div>
   </section>
 
@@ -292,17 +441,36 @@
      For a Gyazo / .mp4 clip (plays silently on loop), use mp4: "https://i.gyazo.com/xxxx.mp4". */
   const DISCORD = "silence5480";
   const WORK = [
-    { img: "media/ui-dialogue.png", title: "UI + NPC Dialogue", text: "Dialogue panel with portrait, quest card with live progress and rewards." },
-    { img: "media/main-menu.jpg", pos: "left center", title: "Main Menu + HUD", text: "Player card, menu hub with hotkeys, health bar and skill hotbar." },
-    { mp4: "https://i.gyazo.com/d1126bfa25c3d35304b69cd8116e56c5.mp4", title: "Inventory + Sorting (Creature World)", text: "Creature collection grid with stats panel, equip, and sort options." },
-    { mp4: "https://i.gyazo.com/27647f1941b712df6f8e24ce49cad4a7.mp4", title: "Leaderboards (Creature World)", text: "Live global leaderboards saved with DataStore, from a game with 1.8M+ visits." },
-    { mp4: "https://i.gyazo.com/afab200b9b11d7ff93dfedb68dbd07b5.mp4", title: "Combat: M1 String + Parry", text: "Basic M1 combo string, parry timing and hit VFX." },
-    { mp4: "https://i.gyazo.com/1656b841fe416656e2b95d9dd14bd841.mp4", title: "Skill: Blood", text: "A blood skill with custom VFX." },
-    { mp4: "https://i.gyazo.com/aa7cfcad378ad735204c287932e8f64c.mp4", title: "Weapon: Lance M1 + M2", text: "Lance light and heavy attacks with hit effects." },
-    { mp4: "https://i.gyazo.com/4df388165a6f1057d794b97e53af6b23.mp4", title: "Skill: Flame Fist", text: "Fire-charged punch with flame VFX." },
-    { mp4: "https://i.gyazo.com/bbb9801c76c05cfa35997fe69c7e84e6.mp4", title: "Skill: Flame Pillar", text: "Area attack: a pillar of fire erupts from the ground." },
-    { mp4: "https://i.gyazo.com/bdf83370029133402ce44a64cd56713d.mp4", title: "Skill: Flame Emperor", text: "Ultimate-style fire move with big VFX." },
-    { id: "", title: "Map Build", text: "A mobile-friendly map, built and connected." },
+    { img: "media/ui-dialogue.png", title: "UI + NPC Dialogue", text: "Dialogue panel with portrait, quest card with live progress and rewards.",
+      th: "UI + บทสนทนา NPC", tt: "หน้าต่างคุยกับ NPC มีภาพตัวละคร การ์ดเควสอัปเดตความคืบหน้ากับรางวัลสดๆ" },
+    { img: "media/main-menu.jpg", pos: "left center", title: "Main Menu + HUD", text: "Player card, menu hub with hotkeys, health bar and skill hotbar.",
+      th: "เมนูหลัก + HUD", tt: "การ์ดผู้เล่น เมนูรวมพร้อมปุ่มลัด แถบเลือด และแถบสกิล" },
+    { mp4: "https://i.gyazo.com/d1126bfa25c3d35304b69cd8116e56c5.mp4", tag: "wire", title: "Inventory + Sorting (Creature World)", text: "UI design by a friend; I scripted it: creature grid, stats panel, equip and sort options.",
+      th: "กระเป๋า + ระบบเรียง (Creature World)", tt: "ดีไซน์ UI โดยเพื่อน ผมเขียนสคริปต์ให้ใช้งานได้: ตารางสะสมสัตว์ หน้าค่าพลัง ปุ่มสวมใส่ และการเรียง" },
+    { mp4: "https://i.gyazo.com/27647f1941b712df6f8e24ce49cad4a7.mp4", title: "Leaderboards (Creature World)", text: "Live global leaderboards saved with DataStore, from a game with 1.8M+ visits.",
+      th: "ลีดเดอร์บอร์ด (Creature World)", tt: "ลีดเดอร์บอร์ดทั้งเซิร์ฟเวอร์แบบเรียลไทม์ เซฟด้วย DataStore จากเกมที่มียอดเข้าเล่น 1.8M+" },
+    { mp4: "https://i.gyazo.com/afab200b9b11d7ff93dfedb68dbd07b5.mp4", title: "Combat: M1 String + Parry", text: "Basic M1 combo string, parry timing and hit VFX.",
+      th: "ต่อสู้: คอมโบ M1 + Parry", tt: "คอมโบ M1 พื้นฐาน จังหวะ Parry และ VFX ตอนโดนตี" },
+    { mp4: "https://i.gyazo.com/1656b841fe416656e2b95d9dd14bd841.mp4", title: "Skill: Blood", text: "A blood skill with custom VFX.",
+      th: "สกิล: เลือด", tt: "สกิลสายเลือด VFX ทำเองทั้งหมด" },
+    { mp4: "https://i.gyazo.com/aa7cfcad378ad735204c287932e8f64c.mp4", title: "Weapon: Lance M1 + M2", text: "Lance light and heavy attacks with hit effects.",
+      th: "อาวุธ: หอก M1 + M2", tt: "ท่าโจมตีเบาและหนักของหอก พร้อมเอฟเฟกต์ตอนโดน" },
+    { mp4: "https://i.gyazo.com/4df388165a6f1057d794b97e53af6b23.mp4", title: "Skill: Flame Fist", text: "Fire-charged punch with flame VFX.",
+      th: "สกิล: หมัดเพลิง", tt: "หมัดอัดไฟเต็มแรง พร้อม VFX เปลวเพลิง" },
+    { mp4: "https://i.gyazo.com/bbb9801c76c05cfa35997fe69c7e84e6.mp4", title: "Skill: Flame Pillar", text: "Area attack: a pillar of fire erupts from the ground.",
+      th: "สกิล: เสาเพลิง", tt: "โจมตีเป็นวง: เสาไฟพุ่งขึ้นจากพื้น" },
+    { mp4: "https://i.gyazo.com/bdf83370029133402ce44a64cd56713d.mp4", title: "Skill: Flame Emperor", text: "Ultimate-style fire move with big VFX.",
+      th: "สกิล: จักรพรรดิเพลิง", tt: "ท่าไฟระดับอัลติ VFX ใหญ่จัดเต็ม" },
+    { mp4: "https://i.gyazo.com/76e838e72a5b37707895b7fdbbfec53b.mp4", tag: "wire", title: "Skill: Sukuna-style Slashes", text: "Existing slash VFX wired into a skill: timing, hitbox and effects synced.",
+      th: "สกิล: ฟันแบบสุคุนะ", tt: "นำ VFX ฟันที่มีอยู่แล้วมาต่อเป็นสกิล จูนจังหวะ ฮิตบ็อกซ์ และเอฟเฟกต์ให้ตรงกัน" },
+    { mp4: "https://i.gyazo.com/92ca847cf4bfe8d996f6f0e62ccd33be.mp4", tag: "wire", title: "Skill: Black Flash", text: "Black Flash-style critical punch wired up: hit timing, impact VFX and feedback synced.",
+      th: "สกิล: Black Flash", tt: "ต่อระบบหมัดคริติคอลสไตล์ Black Flash จูนจังหวะโดน VFX กระแทก และฟีดแบ็กให้ตรงกัน" },
+    { mp4: "https://i.gyazo.com/7d78dc613d1f436ea5161288066da044.mp4", tag: "wire", title: "Skill: Sukuna-style Lightning", text: "Lightning VFX wired into a skill: strike timing, hitbox and effects synced.",
+      th: "สกิล: สายฟ้าแบบสุคุนะ", tt: "นำ VFX สายฟ้ามาต่อเป็นสกิล จูนจังหวะฟ้าผ่า ฮิตบ็อกซ์ และเอฟเฟกต์ให้ตรงกัน" },
+    { mp4: "https://i.gyazo.com/197b28c0d0ceb6b8c7cb65362426e7c5.mp4", tag: "wire", title: "Cutscreen: Mahoraga-style Summon", text: "Cinematic cut-in wired up: camera, timing and effects triggered on cue.",
+      th: "คัตซีน: อัญเชิญแบบมาโฮรากะ", tt: "ต่อระบบคัตซีนเต็มจอ ทั้งกล้อง จังหวะ และเอฟเฟกต์ ให้เล่นตรงคิว" },
+    { id: "", title: "Map Build", text: "A mobile-friendly map, built and connected.",
+      th: "สร้างแมพ", tt: "แมพที่เล่นบนมือถือลื่น สร้างและเชื่อมระบบพร้อม" },
   ];
   /* ===================== */
 
@@ -319,23 +487,154 @@
       ?`<div class="vid"><a href="${w.img}" target="_blank" rel="noopener"><img src="${w.img}" alt="${w.title}" loading="lazy"${w.pos ? ` style="object-position:${w.pos}"` : ""}></a></div>`
       : w.id
       ?`<div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(w.id)}" title="${w.title}" loading="lazy" allowfullscreen></iframe></div>`
-      : `<div class="vid empty">Coming soon</div>`;
+      : `<div class="vid empty" data-th="เร็วๆ นี้">Coming soon</div>`;
     el.innerHTML = vid + `<div class="info"><h3></h3><p></p></div>`;
-    el.querySelector("h3").textContent = w.title;
-    el.querySelector("p").textContent = w.text;
+    const h = el.querySelector("h3"), p = el.querySelector("p");
+    h.textContent = w.title; p.textContent = w.text;
+    if (w.th) h.dataset.th = w.th;
+    if (w.tt) p.dataset.th = w.tt;
+    // tag: "wire" = their asset, I connected it. Anything else with a clip/picture = I made it.
+    const kind = w.tag || ((w.mp4 || w.img) ? "make" : "");
+    // filter groups, worked out from the English title
+    const cats = [kind];
+    if (kind) {   // placeholders ("Coming soon") only show under All
+      if (/\bUI\b|Menu|Inventory/.test(w.title)) cats.push("ui");
+      if (/Inventory|Leaderboard|Dialogue/.test(w.title)) cats.push("systems");
+      if (/Combat|Skill|Weapon|Cutscreen/.test(w.title)) cats.push("combat");
+    }
+    el.dataset.cats = cats.filter(Boolean).join(" ");
+    if (kind) {
+      const b = document.createElement("span");
+      const wire = kind === "wire";
+      b.className = (wire ? "tag-wire" : "tag-make") + " clip-tag";
+      b.textContent = wire ? "Wire up" : "Make";
+      b.dataset.th = wire ? "เชื่อมระบบ" : "ทำเอง";
+      el.querySelector(".info").prepend(b);
+    }
     grid.appendChild(el);
   }
 
+  // clip filters
+  document.getElementById("filters").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    document.querySelectorAll("#filters button").forEach(x => x.classList.toggle("on", x === b));
+    const f = b.dataset.f;
+    grid.querySelectorAll(".clip").forEach(c => {
+      const show = f === "all" || (c.dataset.cats || "").split(" ").includes(f);
+      c.hidden = !show;
+      if (show) { c.style.transitionDelay = "0s"; c.style.opacity = "1"; c.style.transform = ""; }
+    });
+  });
+
   document.getElementById("copyBtn").addEventListener("click", async () => {
     const msg = document.getElementById("copied");
-    try { await navigator.clipboard.writeText(DISCORD); msg.textContent = "Copied. See you in DMs."; }
+    const th = document.documentElement.lang === "th";
+    try { await navigator.clipboard.writeText(DISCORD); msg.textContent = th ? "ก๊อปแล้ว! ทักมาได้เลย" : "Copied. See you in DMs."; }
     catch { msg.textContent = "Discord: " + DISCORD; }
     setTimeout(() => msg.textContent = "", 2500);
+  });
+
+  // ===== language: Thai for Thai visitors, button to switch =====
+  // Every element with data-th has its Thai version there; English stays in the HTML.
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-th]").forEach(el => {
+      if (el.dataset.en === undefined) el.dataset.en = el.innerHTML;
+      el.innerHTML = lang === "th" ? el.dataset.th : el.dataset.en;
+    });
+    document.getElementById("langBtn").textContent = lang === "th" ? "EN" : "TH";
+    document.title = lang === "th" ? "Yosafired | รับทำเกม Roblox" : "Yosafired | Roblox Developer";
+  }
+  function startLang() {
+    let saved = null;
+    try { saved = localStorage.getItem("lang"); } catch (e) {}
+    if (saved === "th" || saved === "en") return saved;
+    const langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
+    return langs.some(l => /^th\b/i.test(l)) ? "th" : "en";
+  }
+  setLang(startLang());
+  document.getElementById("langBtn").addEventListener("click", () => {
+    const next = document.documentElement.lang === "th" ? "en" : "th";
+    setLang(next);
+    try { localStorage.setItem("lang", next); } catch (e) {}
   });
 
   // fade sections in on scroll
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
   document.querySelectorAll(".reveal").forEach(s => io.observe(s));
+
+  // ===== magic tricks =====
+  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(pointer: fine)").matches;
+
+  // name letters rise in one by one
+  const h1 = document.querySelector("h1");
+  const name = h1.textContent;
+  h1.textContent = "";
+  [...name].forEach((c, i) => {
+    const s = document.createElement("span");
+    s.className = "ch"; s.textContent = c;
+    s.style.animationDelay = (0.15 + i * 0.07) + "s";
+    h1.appendChild(s);
+  });
+  h1.setAttribute("aria-label", name);
+  setTimeout(() => h1.classList.add("lit"), 900 + name.length * 70);
+
+  // cards inside a section appear one after another
+  document.querySelectorAll(".reveal").forEach(sec => {
+    sec.querySelectorAll(".card, .clip, .game, .genres span").forEach((el, i) => {
+      el.style.transitionDelay = Math.min(i * 0.08, 0.8) + "s";
+      el.addEventListener("transitionend", () => { el.style.transitionDelay = ""; }, { once: true });
+    });
+  });
+
+  // hero numbers count up
+  function countUp(el) {
+    const m = el.textContent.match(/^(\d+)(.*)$/);
+    if (!m || calm) return;
+    const end = +m[1], suffix = m[2], t0 = performance.now(), dur = 1400;
+    (function step(t) {
+      const p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(end * e) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+  setTimeout(() => document.querySelectorAll(".hero-stats b").forEach(countUp), 600);
+
+  // 3D tilt + glow that follows the mouse (desktop only)
+  if (fine && !calm) {
+    document.querySelectorAll(".card, .clip, .game").forEach(el => {
+      el.classList.add("tilt");
+      const g = document.createElement("div"); g.className = "tilt-glare"; el.appendChild(g);
+      el.addEventListener("mousemove", e => {
+        const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        el.style.transform = `perspective(900px) rotateY(${(x - .5) * 8}deg) rotateX(${(.5 - y) * 8}deg) translateY(-3px)`;
+        el.style.setProperty("--gx", x * 100 + "%"); el.style.setProperty("--gy", y * 100 + "%");
+      });
+      el.addEventListener("mouseleave", () => { el.style.transform = ""; });
+    });
+  }
+
+  // magic sparks: trail behind the cursor, burst on click / tap
+  function spark(x, y, spread) {
+    const s = document.createElement("div"); s.className = "spark";
+    const a = Math.random() * 6.28, d = spread * (0.4 + Math.random() * 0.6);
+    s.style.left = x + "px"; s.style.top = y + "px";
+    s.style.setProperty("--dx", Math.cos(a) * d + "px"); s.style.setProperty("--dy", (Math.sin(a) * d - 10) + "px");
+    document.body.appendChild(s); setTimeout(() => s.remove(), 850);
+  }
+  if (!calm) {
+    let last = 0;
+    if (fine) addEventListener("mousemove", e => { const now = performance.now(); if (now - last > 45) { last = now; spark(e.clientX, e.clientY, 18); } });
+    addEventListener("pointerdown", e => { for (let i = 0; i < 12; i++) spark(e.clientX, e.clientY, 60); });
+  }
+
+  // scroll progress bar
+  const bar = document.getElementById("progress");
+  addEventListener("scroll", () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.width = (h > 0 ? scrollY / h * 100 : 0) + "%";
+  }, { passive: true });
 
   // floating embers
   const c = document.getElementById("embers"), ctx = c.getContext("2d");
