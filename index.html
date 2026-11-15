@@ -4,7 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Yosafired | Roblox Developer</title>
-<meta name="description" content="Roblox developer for hire: Luau scripting, game systems, maps, UI and VFX.">
+<meta name="description" content="Roblox developer for hire: Luau scripting, game systems, maps, UI and VFX. 14M+ visits on games I've worked on.">
+<meta name="theme-color" content="#c4203a">
+<link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32.png">
+<link rel="apple-touch-icon" href="media/icon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yosafired">
+<meta property="og:url" content="https://yosafired.github.io/">
+<meta property="og:title" content="Yosafired | Roblox Developer · Game Magician">
+<meta property="og:description" content="Scripting, game systems, UI, VFX and maps. 14M+ visits on games I've worked on. Commissions open.">
+<meta property="og:image" content="https://yosafired.github.io/media/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yosafired.github.io/media/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
@@ -16,6 +29,20 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+  /* background art behind the top section, fades into the page */
+  .hero-bg{position:absolute;top:0;left:0;right:0;height:110vh;z-index:0;pointer-events:none;
+    background:
+      linear-gradient(90deg,rgba(8,7,10,.92) 0%,rgba(8,7,10,.7) 45%,rgba(8,7,10,.35) 100%),
+      linear-gradient(180deg,rgba(8,7,10,.25) 0%,rgba(8,7,10,.15) 55%,var(--bg) 100%),
+      url("media/hero-bg.jpg") center 30%/cover no-repeat;
+    animation:bgdrift 30s ease-in-out infinite alternate}
+  @keyframes bgdrift{from{background-position:0 0,0 0,center 30%}to{background-position:0 0,0 0,center 38%}}
+  @media (max-width:640px){
+    .hero-bg{background:
+      linear-gradient(180deg,rgba(8,7,10,.55) 0%,rgba(8,7,10,.78) 50%,var(--bg) 100%),
+      url("media/hero-bg.jpg") 60% 20%/cover no-repeat}
+  }
+  @media (prefers-reduced-motion:reduce){ .hero-bg{animation:none} }
   canvas#embers{position:fixed;inset:0;z-index:0;pointer-events:none}
   .wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 20px}
   a{color:inherit}
@@ -37,6 +64,11 @@
   .hero p.lead b{color:var(--text);font-weight:500}
   .hero p.lead b.magic{font-weight:700;background:linear-gradient(90deg,var(--text),var(--red2),#ffb36b,var(--red2),var(--text));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
   @keyframes shimmer{to{background-position:300% 0}}
+  .rbx-id{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-top:12px;text-decoration:none;color:var(--muted);font-size:15px}
+  .rbx-name{color:var(--text);font-weight:700;font-size:17px}
+  .rbx-user{color:var(--muted)}
+  .rbx-go{color:var(--red2);font-size:13px;font-weight:500;opacity:.85;transition:opacity .2s}
+  .rbx-id:hover .rbx-go{opacity:1;text-decoration:underline}
   .solo{max-width:560px;margin:-14px 0 32px;padding:14px 18px;border-left:3px solid var(--red2);background:rgba(18,16,21,.75);color:var(--muted);font-size:15px}
   .solo b{color:var(--text);font-weight:700}
   .solo span{color:var(--text)}
@@ -74,12 +106,18 @@
   .genres-note{color:var(--muted);margin-top:18px}
 
   /* work */
-  .work{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .work{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start}
   .clip{background:var(--panel);border:1px solid var(--line);overflow:hidden;transition:border-color .25s}
   .clip:hover{border-color:var(--red)}
   .clip .vid{aspect-ratio:16/9;background:#000;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
   .clip .vid iframe{width:100%;height:100%;border:0}
   .clip .vid a{display:block;width:100%;height:100%}
+  .vid.yt{position:relative;cursor:pointer}
+  .vid.yt img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.8);transition:filter .25s}
+  .vid.yt:hover img{filter:brightness(1)}
+  .yt-play{position:absolute;left:50%;top:50%;width:64px;height:44px;margin:-22px 0 0 -32px;border-radius:12px;background:var(--red);box-shadow:0 0 20px rgba(255,61,90,.6);transition:transform .2s}
+  .yt-play::after{content:"";position:absolute;left:26px;top:13px;border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #fff}
+  .vid.yt:hover .yt-play{transform:scale(1.1)}
   .clip .vid video{width:100%;height:100%;object-fit:cover;display:block}
   .clip .vid img{width:100%;height:100%;object-fit:cover;object-position:center 70%;display:block;transition:transform .4s}
   .clip:hover .vid img{transform:scale(1.04)}
@@ -117,7 +155,27 @@
   html[lang=th] .tag,html[lang=th] .num,html[lang=th] .btn,html[lang=th] nav ul a,html[lang=th] .status,html[lang=th] .stats span,html[lang=th] .hero-stats span,html[lang=th] .pay,html[lang=th] h2,html[lang=th] h3{letter-spacing:.02em}
   html[lang=th] .solo em,html[lang=th] .rows span em{font-style:normal}
 
+  .live{display:flex;align-items:center;gap:12px;margin:-12px 0 26px;padding:14px 16px;border:1px solid #2f6b47;background:linear-gradient(90deg,rgba(61,220,132,.10),transparent);color:var(--muted);text-decoration:none;font-size:14px;transition:border-color .2s}
+  .live:hover{border-color:#3ddc84}
+  .live b{color:var(--text)}
+  .live-dot{flex:none;width:9px;height:9px;border-radius:50%;background:#3ddc84;box-shadow:0 0 10px #3ddc84;animation:pulse 2s infinite}
+  .live-go{flex:none;margin-left:auto;color:#3ddc84;font-weight:700;white-space:nowrap}
+  .ask-box{display:flex;align-items:center;gap:14px;margin-top:24px;padding:16px 18px;border:1px dashed var(--red);background:var(--panel);color:var(--muted);text-decoration:none;font-size:15px;transition:background .2s,border-style .2s}
+  .ask-box:hover{background:var(--panel2);border-style:solid}
+  .ask-box b{color:var(--text)}
+  .ask-q{flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--red);color:#fff;font:800 18px Cinzel,serif}
+  .ask-go{flex:none;margin-left:auto;color:var(--red2);font-weight:700;white-space:nowrap}
   .clip-tag{margin-bottom:8px}
+  .more{margin-top:12px}
+  .more summary{display:inline-flex;align-items:center;gap:8px;cursor:pointer;list-style:none;color:var(--red2);font-size:13px;font-weight:700;letter-spacing:.06em;padding:6px 12px;border:1px solid var(--line);background:var(--panel2);transition:border-color .2s}
+  .more summary::-webkit-details-marker{display:none}
+  .more summary::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+  .more[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
+  .more summary:hover{border-color:var(--red)}
+  .more summary b{font-weight:700;color:var(--muted);font-size:12px}
+  .pts{list-style:none;margin-top:10px}
+  .pts li{position:relative;padding-left:16px;color:var(--muted);font-size:13px;line-height:1.5;margin-top:5px}
+  .pts li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;background:var(--red2);transform:rotate(45deg)}
   .clip[hidden]{display:none}
   .filters{display:flex;flex-wrap:wrap;gap:8px;margin:-16px 0 24px}
   .filters button{background:var(--panel);border:1px solid var(--line);color:var(--muted);font:500 13px Inter,Prompt,sans-serif;padding:7px 14px;cursor:pointer;transition:all .2s}
@@ -129,7 +187,7 @@
   html[lang=th] .credit{font-style:normal}
 
   /* prices */
-  .prices{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+  .prices{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));align-items:start}
   .paybox{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:-14px 0 26px;padding:14px 16px;border:1px solid var(--red);background:linear-gradient(90deg,rgba(196,32,58,.14),transparent)}
   .paylabel{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red2);margin-right:6px}
   html[lang=th] .paylabel{letter-spacing:.02em;font-size:14px}
@@ -141,6 +199,8 @@
   .tag-make,.tag-wire{display:inline-block;font-style:normal;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;margin-right:8px;vertical-align:2px;border:1px solid}
   .tag-make{color:var(--red2);border-color:var(--red)}
   .tag-wire{color:#7fb6ff;border-color:#36557d}
+  .tag-anim{display:inline-block;font-style:normal;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;margin-right:8px;vertical-align:2px;border:1px solid #6b4a8f;color:#c79bff}
+  html[lang=th] .tag-anim{letter-spacing:.02em}
   .rows{list-style:none;margin-top:12px}
   .rows li{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:12px 0;border-top:1px solid var(--line)}
   .rows li:first-child{border-top:0}
@@ -149,6 +209,7 @@
   .rows b{font-family:Cinzel,serif;font-size:19px;color:var(--text);text-align:right;white-space:nowrap}
   .rows b small{display:block;font-family:Inter,sans-serif;font-size:12px;font-weight:500;color:var(--red2)}
   .rows li.deal b{color:#ffb36b}
+  .price .bundle{margin-top:8px;color:#ffb36b;font-size:13px}
   .price .hint{font-size:13px;margin-top:6px;color:var(--muted)}
   .price h3{margin-top:0}
   .price p{min-height:24px}
@@ -226,6 +287,7 @@
 </style>
 </head>
 <body>
+<div class="hero-bg" aria-hidden="true"></div>
 <canvas id="embers"></canvas>
 <div id="progress"></div>
 
@@ -248,6 +310,9 @@
   <header class="hero">
     <div class="tag" data-th="Roblox Developer &middot; นักเวทย์สายเกม">Roblox Developer &middot; Game Magician</div>
     <h1>YOSAFIRED</h1>
+    <a class="rbx-id" href="https://www.roblox.com/users/87225669/profile" target="_blank" rel="noopener">
+      <span class="rbx-name">Sitri</span><span class="rbx-user">@KayBoy_LMN</span><span class="rbx-go" data-th="โปรไฟล์ Roblox &rarr;">Roblox profile &rarr;</span>
+    </a>
     <p class="lead" data-th="เกมรันได้น่ะธรรมดา <b class='magic'>ผมทำให้เกมมีชีวิต!</b><br>สคริปต์ Luau ระบบเกม แมพ UI VFX บน Roblox จัดให้ครบ">I don't just make games run. <b class="magic">I make them feel alive.</b><br>Luau scripting, game systems, maps, UI and VFX for Roblox.</p>
     <div class="solo" data-th="<b>Dev เดี่ยว ลุยมา 5 ปีกว่า</b> ร่วมงานมาหลายทีมแล้ว เกมนึงทำเองได้แทบทุกส่วน ระดับกลางแบบแน่นๆ ทั้งสคริปต์ ระบบ UI VFX แมพ <span>ทำได้หมด ยกเว้นแอนิเมชัน (อันนี้ขอผ่าน ฮ่า)</span><em>แอบบอก: ชอบเกมที่มีเรื่องราวให้ขุด ยิ่งโลกลึก ยิ่งสนุกตอนทำ</em>">
       <b>Solo developer with 5+ years of experience</b>, working with many teams along the way. I can build almost every part of a game myself, at a solid intermediate level: scripting, systems, UI, VFX and maps. <span>Everything except animation.</span>
@@ -259,7 +324,7 @@
     </div>
     <div class="hero-stats">
       <div><b>5+</b><span data-th="ปีประสบการณ์">Years experience</span></div>
-      <div><b>13M+</b><span data-th="ยอดเข้าเล่นเกมที่เคยทำ">Visits on my games</span></div>
+      <div><b>14M+</b><span data-th="ยอดเข้าเล่นเกมที่เคยทำ">Visits on my games</span></div>
       <div><b data-th="เพียบ">Many</b><span data-th="ทีมที่เคยร่วมงาน">Teams worked with</span></div>
     </div>
     <div class="status" data-th="<i></i>ว่างรับงานอยู่นะ"><i></i>Commissions open</div>
@@ -267,9 +332,9 @@
 
   <section id="games" class="reveal">
     <h2 data-th="เกมที่ได้ไปเฉิดฉายแล้ว">Released Games</h2>
-    <p class="sub" data-th="เกมที่เคยร่วมทำ มีคนเข้าเล่นรวมกันกว่า <b style='color:var(--text)'>13 ล้านครั้ง</b> แล้ว">Live on Roblox: <b style="color:var(--text)">13M+ visits</b> across games I've worked on.</p>
+    <p class="sub" data-th="เกมที่เคยร่วมทำ มีคนเข้าเล่นรวมกันกว่า <b style='color:var(--text)'>14 ล้านครั้ง</b> แล้ว">Live on Roblox: <b style="color:var(--text)">14M+ visits</b> across games I've worked on.</p>
     <a class="game" href="https://www.roblox.com/games/130169555191153/Universal-piece" target="_blank" rel="noopener">
-      <div class="game-img"><img src="https://tr.rbxcdn.com/180DAY-3f518dadb9a7c20b1956e613880bb1a9/500/280/Image/Jpeg/noFilter" alt="Universal Piece thumbnail" loading="lazy"></div>
+      <div class="game-img"><img src="media/game-universal-piece.jpg" alt="Universal Piece thumbnail" loading="lazy"></div>
       <div class="game-info">
         <div class="num" data-th="Action RPG &middot; งานทีม">Action RPG &middot; Team project</div>
         <h3>Universal Piece</h3>
@@ -284,7 +349,7 @@
       </div>
     </a>
     <a class="game" href="https://www.roblox.com/games/88144122498773/Creature-World" target="_blank" rel="noopener">
-      <div class="game-img"><img src="https://tr.rbxcdn.com/180DAY-ab50fa9c9291a1283e8c27739ab00a91/500/280/Image/Jpeg/noFilter" alt="Creature World thumbnail" loading="lazy"></div>
+      <div class="game-img"><img src="media/game-creature-world.jpg" alt="Creature World thumbnail" loading="lazy"></div>
       <div class="game-info">
         <div class="num">Incremental Simulator</div>
         <h3>Creature World</h3>
@@ -292,14 +357,14 @@
         <div class="stats">
           <div><b>1.8M+</b><span data-th="ยอดเข้าเล่น">Visits</span></div>
           <div><b>5.6K+</b><span data-th="รายการโปรด">Favorites</span></div>
-          <div><b>Solo</b><span>Scripter</span></div>
+          <div><b>Lead</b><span>Scripter</span></div>
         </div>
-        <p class="role" data-th="ทุกระบบในเกมนี้ ผมเขียนเองคนเดียวทั้งหมด">Every system scripted by me, alone.</p>
+        <p class="role" data-th="Lead Scripter ออกแบบและสร้างระบบหลักทั้งหมดของเกม">Lead Scripter. Designed and built the game's core systems.</p>
         <span class="play" data-th="ไปลองเล่น &rarr;">Play on Roblox &rarr;</span>
       </div>
     </a>
     <a class="game" href="https://www.roblox.com/games/88066796152438/XIN-TOWN-OFFICIAL" target="_blank" rel="noopener">
-      <div class="game-img"><img src="https://tr.rbxcdn.com/180DAY-a041334b0af283092b7e9cf81594127e/500/280/Image/Jpeg/noFilter" alt="XIN TOWN thumbnail" loading="lazy"></div>
+      <div class="game-img"><img src="media/game-xin-town.jpg" alt="XIN TOWN thumbnail" loading="lazy"></div>
       <div class="game-info">
         <div class="num" data-th="Life Roleplay &middot; งานทีม">Life Roleplay &middot; Team project</div>
         <h3>XIN TOWN</h3>
@@ -313,11 +378,31 @@
         <span class="play" data-th="ไปลองเล่น &rarr;">Play on Roblox &rarr;</span>
       </div>
     </a>
+    <a class="game" href="https://www.roblox.com/games/134064094734814/Shura-Unleashed" target="_blank" rel="noopener">
+      <div class="game-img"><img src="media/game-shura.jpg" alt="Shura: Unleashed thumbnail" loading="lazy"></div>
+      <div class="game-info">
+        <div class="num" data-th="Action Combat &middot; งานทีม &middot; ยังทำอยู่">Action Combat &middot; Team project &middot; Current</div>
+        <h3>Shura: Unleashed</h3>
+        <p data-th="เกมต่อสู้ที่เน้นเกมเพลย์จัดเต็ม: M1/M2 บล็อกและหลบ แดช ชาร์จโมเมนตัม ขี่พาหนะ ลาก ปล้น และระบบแคลน เล่นได้ทั้ง PC และจอย">A combat game built around deep gameplay: M1/M2, block and dodge, dashes, momentum, mounts, dragging, robbing and clans. Playable on PC and controller.</p>
+        <div class="stats">
+          <div><b>429K+</b><span data-th="ยอดเข้าเล่น">Visits</span></div>
+          <div><b>3.2K+</b><span data-th="รายการโปรด">Favorites</span></div>
+          <div><b>Full</b><span>Stack</span></div>
+        </div>
+        <p class="role" data-th="Full Stack Developer ในทีม ทำสกิล ฮิตบ็อกซ์การต่อสู้ แก้บั๊ก และบาลานซ์เกม ทั้งฝั่ง client และ server เกมไม่ใหญ่มาก แต่เกมเพลย์แน่น">Full Stack Developer on the team: skills, combat hitboxes, bug fixing and game balance, across client and server. Not the biggest game, but the gameplay is solid.</p>
+        <span class="play" data-th="ไปลองเล่น &rarr;">Play on Roblox &rarr;</span>
+      </div>
+    </a>
   </section>
 
   <section id="work" class="reveal">
     <h2 data-th="ผลงานบางส่วน">Some of My Works</h2>
     <p class="sub" data-th="หยิบมาโชว์แค่บางส่วน ที่เหลืออีกเยอะเปิดให้ดูสาธารณะไม่ได้ อยากดูแบบไหนทักมาเลย">A small selection of systems and effects. Plenty more I can't show publicly, so ask if you need something specific.</p>
+    <a class="live" href="https://www.roblox.com/games/88144122498773/Creature-World" target="_blank" rel="noopener">
+      <span class="live-dot"></span>
+      <span data-th="อยากเห็นระบบเล่นจริง? เข้าไปลองใน <b>Creature World</b> ได้เลย ทั้งระบบสุ่ม สภาพอากาศ ลีดเดอร์บอร์ด และกระเป๋า ใช้งานจริงอยู่ในเกม">Want to see the systems live? Jump into <b>Creature World</b>: the roll system, weather, leaderboards and inventory are all running in the real game.</span>
+      <span class="live-go" data-th="ไปเล่น &rarr;">Play &rarr;</span>
+    </a>
     <div class="filters" id="filters">
       <button class="on" data-f="all" data-th="ทั้งหมด">All</button>
       <button data-f="make" data-th="ทำเอง">Make</button>
@@ -327,6 +412,11 @@
       <button data-f="systems" data-th="ระบบ">Systems</button>
     </div>
     <div class="work" id="workGrid"></div>
+    <a class="ask-box" href="#contact">
+      <span class="ask-q">?</span>
+      <span data-th="<b>ไม่เจอระบบที่ต้องการ?</b> ไม่ได้แปลว่าผมทำไม่ได้ นี่แค่บางส่วนที่โชว์ได้ บอกมาเลยว่าเกมคุณต้องการอะไร"><b>Don't see the system you need?</b> That doesn't mean I can't build it. This is only part of what I can show. Tell me what your game needs.</span>
+      <span class="ask-go" data-th="ทักมาเลย &rarr;">Ask me &rarr;</span>
+    </a>
     <p class="credit" data-th="เครดิต: โมเดลและแอนิเมชันในบางคลิป เป็นฝีมือเพื่อนๆ ที่ทำงานด้วยกัน">Credit: models and animations in some clips are by friends I work with.</p>
   </section>
 
@@ -390,6 +480,8 @@
         <h3>UI</h3>
         <ul class="rows">
           <li><span data-th="<i class='tag-make'>ทำให้</i>1 เฟรม / หน้าต่าง"><i class="tag-make">Make</i>One frame / window</span><b>350&ndash;500 ฿<small>1,200&ndash;1,750 R$</small></b></li>
+          <li><span data-th="<i class='tag-wire'>เชื่อมระบบ</i>ต่อ UI ของคุณเข้ากับเกม (1 หน้า)"><i class="tag-wire">Wire up</i>Your UI connected to the game (per screen)</span><b data-th="เริ่ม 150 ฿<small>เริ่ม 500 R$</small>">from 150 ฿<small>from 500 R$</small></b></li>
+          <li><span data-th="<i class='tag-anim'>อนิเมต</i>ใส่อนิเมชันให้ UI: เปิด/ปิด โฮเวอร์ กด (1 หน้า)"><i class="tag-anim">Animate</i>UI animations: open/close, hover, click (per screen)</span><b>+100&ndash;200 ฿<small>+350&ndash;700 R$</small></b></li>
           <li class="deal"><span data-th="<i class='tag-make'>ทำให้</i>UI ทั้งชุด ทุกหน้า<em>ราคาแพ็กเกจ ลดพิเศษ</em>"><i class="tag-make">Make</i>Full UI package, all pages<em>Package discount</em></span><b>2,000&ndash;3,000 ฿<small>7,000&ndash;10,000 R$</small></b></li>
         </ul>
       </div>
@@ -412,7 +504,7 @@
           <li><span data-th="แก้บั๊ก หรือสคริปต์เล็กๆ">Fix a bug or small script</span><b data-th="เริ่ม 150 ฿<small>เริ่ม 500 R$</small>">from 150 ฿<small>from 500 R$</small></b></li>
         </ul>
       </div>
-      <div class="card price big"><h3 data-th="ทั้งเกม / อัปเดตใหญ่">Full Game / Big Update</h3><p data-th="หลายระบบ แมพ และ UI รวมกัน">Several systems, maps and UI together</p><div class="amt" data-th="ทักมาคุยราคา">DM for quote</div></div>
+      <div class="card price big"><h3 data-th="ทั้งเกม / อัปเดตใหญ่">Full Game / Big Update</h3><p data-th="หลายระบบ แมพ และ UI รวมกัน">Several systems, maps and UI together</p><p class="bundle" data-th="จ้างเป็นแพ็กเกจ มักถูกกว่าจ้างแยกทีละชิ้น เพราะได้ส่วนลดแพ็กเกจ">Bundling usually costs less than paying piece by piece, thanks to a package discount.</p><div class="amt" data-th="ทักมาคุยราคา">DM for quote</div></div>
     </div>
     <div class="note" data-th="มัดจำ 50% ก่อนเริ่ม ที่เหลือจ่ายตอนส่งงาน งานใหญ่แบ่งจ่ายเป็นช่วงได้ จ่ายผ่านโอนธนาคาร / พร้อมเพย์ หรือ Robux (group payout) ก็ได้">50% upfront, the rest on delivery. Big jobs can be paid per part. Payment by Thai bank transfer / PromptPay, or Robux (group payout).</div>
   </section>
@@ -445,10 +537,74 @@
       th: "UI + บทสนทนา NPC", tt: "หน้าต่างคุยกับ NPC มีภาพตัวละคร การ์ดเควสอัปเดตความคืบหน้ากับรางวัลสดๆ" },
     { img: "media/main-menu.jpg", pos: "left center", title: "Main Menu + HUD", text: "Player card, menu hub with hotkeys, health bar and skill hotbar.",
       th: "เมนูหลัก + HUD", tt: "การ์ดผู้เล่น เมนูรวมพร้อมปุ่มลัด แถบเลือด และแถบสกิล" },
-    { mp4: "https://i.gyazo.com/d1126bfa25c3d35304b69cd8116e56c5.mp4", tag: "wire", title: "Inventory + Sorting (Creature World)", text: "UI design by a friend; I scripted it: creature grid, stats panel, equip and sort options.",
-      th: "กระเป๋า + ระบบเรียง (Creature World)", tt: "ดีไซน์ UI โดยเพื่อน ผมเขียนสคริปต์ให้ใช้งานได้: ตารางสะสมสัตว์ หน้าค่าพลัง ปุ่มสวมใส่ และการเรียง" },
+    { mp4: "https://i.gyazo.com/d1126bfa25c3d35304b69cd8116e56c5.mp4", tag: "wire", title: "Inventory + Sorting (Creature World)", text: "UI design by a friend; I scripted the whole inventory to stay smooth with thousands of creatures.",
+      th: "กระเป๋า + ระบบเรียง (Creature World)", tt: "ดีไซน์ UI โดยเพื่อน ผมเขียนสคริปต์กระเป๋าทั้งหมด ให้ลื่นแม้มีสัตว์เป็นพันตัว",
+      pts: ["Smart updates: only changed slots are redrawn, stale rebuilds are cancelled, and work is spread across frames",
+            "Live sync with player data, debounced so only the changed tab refreshes",
+            "Search, multi-select rarity and tier filters, and pages of 200",
+            "Sorts by drop rate, then weather mutation, then rarity, with the equipped creature pinned on top",
+            "Stats panel with animated bars that show overflow past the max",
+            "Rune tab with 9 equip slots (3 unlockable with Robux), equips checked on the server"],
+      tps: ["อัปเดตเฉพาะช่องที่เปลี่ยน ยกเลิกการโหลดเก่าที่ค้าง และกระจายงานหลายเฟรมไม่ให้กระตุก",
+            "ซิงก์กับข้อมูลผู้เล่นแบบสด หน่วงเวลาให้รีเฟรชเฉพาะแท็บที่เปลี่ยน",
+            "ค้นหา กรองความหายากและระดับได้หลายอัน และแบ่งหน้าละ 200",
+            "เรียงตามอัตราดรอป มิวเทชันสภาพอากาศ แล้วความหายาก ตัวที่ใส่อยู่ปักไว้บนสุด",
+            "หน้าค่าพลังมีแถบอนิเมชัน โชว์ส่วนที่เกินค่าสูงสุดได้",
+            "แท็บรูน 9 ช่อง (ปลดล็อก 3 ช่องด้วย Robux) การใส่รูนเช็กฝั่งเซิร์ฟเวอร์"] },
     { mp4: "https://i.gyazo.com/27647f1941b712df6f8e24ce49cad4a7.mp4", title: "Leaderboards (Creature World)", text: "Live global leaderboards saved with DataStore, from a game with 1.8M+ visits.",
       th: "ลีดเดอร์บอร์ด (Creature World)", tt: "ลีดเดอร์บอร์ดทั้งเซิร์ฟเวอร์แบบเรียลไทม์ เซฟด้วย DataStore จากเกมที่มียอดเข้าเล่น 1.8M+" },
+    { mp4: "https://i.gyazo.com/db8e5e58ad36f5e279876c5a36bb51bd.mp4", title: "Roll System (Creature World)", text: "Advanced gacha roll system built for millions of rolls.",
+      th: "ระบบสุ่ม (Creature World)", tt: "ระบบสุ่มกาชาขั้นสูง รองรับการสุ่มเป็นล้านครั้ง",
+      pts: ["Runs on a pool of 12 parallel Actors, so mass rolls never lag the server",
+            "Rolls in batches with live progress, extra packs queue onto the running job",
+            "Resumes where it left off after a rejoin",
+            "Luck, rarity tiers (Golden, Rainbow, Albino) and weather mutations",
+            "Cross-server shoutouts for ultra-rare pulls, plus suspicious-drop alerts"],
+      tps: ["ใช้ Actor 12 ตัวทำงานคู่ขนาน สุ่มเยอะแค่ไหนเซิร์ฟก็ไม่แลค",
+            "สุ่มเป็นชุด มีแถบความคืบหน้าสดๆ ซื้อเพิ่มระหว่างสุ่มก็ต่อคิวได้",
+            "ออกเกมแล้วเข้าใหม่ ก็สุ่มต่อจากเดิมได้",
+            "มีระบบโชค ระดับความหายาก (Golden, Rainbow, Albino) และมิวเทชันตามสภาพอากาศ",
+            "ประกาศข้ามเซิร์ฟเมื่อได้ตัวหายากสุดๆ และแจ้งเตือนดรอปที่น่าสงสัย"] },
+    { mp4: "https://i.gyazo.com/31a34f267f39f0a12fc4c6579ce08c93.mp4", title: "Weather System (Creature World)", text: "A live weather layer that changes rewards, stats and events across the whole server.",
+      th: "ระบบสภาพอากาศ (Creature World)", tt: "ระบบสภาพอากาศแบบสด เปลี่ยนรางวัล ค่าพลัง และอีเวนต์ทั้งเซิร์ฟเวอร์",
+      pts: ["6 weathers on a weighted, timed cycle; late joiners sync to the current weather and time left",
+            "Server-wide timed boosts to luck, EXP and growth during each weather",
+            "Each weather drops its own egg from objectives and events, which rolls that weather's animals",
+            "Weather mutations on rolled creatures, linked to the roll system",
+            "Live events: Meteor Shower (destructible meteors, shared rewards) and Robot Invasion (mothership, laser-striking battleships, AI drones)",
+            "Purchasable summons with tier rules, all validated on the server"],
+      tps: ["สภาพอากาศ 6 แบบ หมุนเวียนตามเวลาและน้ำหนักสุ่ม คนเข้าทีหลังก็ซิงก์สภาพอากาศและเวลาที่เหลือได้",
+            "บูสต์ทั้งเซิร์ฟเวอร์แบบมีเวลา: โชค EXP และการเติบโต ตามสภาพอากาศ",
+            "แต่ละสภาพอากาศดรอปไข่ของตัวเองจากภารกิจและอีเวนต์ เอาไปสุ่มสัตว์ประจำสภาพอากาศนั้น",
+            "มิวเทชันตามสภาพอากาศบนสัตว์ที่สุ่มได้ เชื่อมกับระบบสุ่ม",
+            "อีเวนต์สด: ฝนดาวตก (อุกกาบาตทำลายได้ แบ่งรางวัลให้ทุกคนที่ช่วย) และหุ่นยนต์บุก (ยานแม่ ยานรบยิงเลเซอร์ และโดรน AI)",
+            "ซื้อเรียกสภาพอากาศได้ มีลำดับชั้น และเช็กฝั่งเซิร์ฟเวอร์ทั้งหมด"] },
+    { img: "media/live-logs.jpg", title: "Security & Live Ops (Creature World)", text: "Designed and integrated an anti-exploit and logging layer running on a live game.",
+      th: "ระบบความปลอดภัย + มอนิเตอร์เกมสด (Creature World)", tt: "ออกแบบและเชื่อมระบบกันโกงกับระบบบันทึกล็อก ใช้งานจริงในเกมที่เปิดอยู่",
+      pts: ["Server-side movement checks against each player's real allowed speed, with flags that decay on normal movement",
+            "Protected AFK rewards: calculated on the server, capped, and cleared before payout so they can't be claimed twice",
+            "Bad or future timestamps rejected, so changing the clock can't farm offline rewards",
+            "Detailed Discord reports through a queued rate limiter: 2.4M+ delivered without being blocked",
+            "Escalation: repeated or unusually large events ping staff, with a cooldown so it never spams"],
+      tps: ["เช็กการเคลื่อนที่ฝั่งเซิร์ฟเวอร์เทียบกับความเร็วจริงของผู้เล่นแต่ละคน และค่าเตือนลดลงเองเมื่อเดินปกติ",
+            "รางวัล AFK ปลอดภัย: คำนวณฝั่งเซิร์ฟเวอร์ มีเพดาน และล้างก่อนจ่าย กดรับซ้ำไม่ได้",
+            "ปฏิเสธเวลาที่ผิดหรือเวลาอนาคต ปรับนาฬิกาเครื่องก็ฟาร์มรางวัลออฟไลน์ไม่ได้",
+            "รายงานละเอียดส่งเข้า Discord ผ่านคิวจำกัดอัตรา ส่งไปแล้วกว่า 2.4 ล้านครั้งโดยไม่โดนบล็อก",
+            "ถ้าเจอเหตุซ้ำๆ หรือผิดปกติมาก ระบบจะแท็กทีมงาน มีคูลดาวน์ไม่ให้สแปม"] },
+    { id: "8NJPVVr0o58", tag: "make", title: "Shop + Gifting System (Creature World)", text: "Robux store, gem merchant and player-to-player gifting, built so no purchase is ever lost.",
+      th: "ระบบร้านค้า + ส่งของขวัญ (Creature World)", tt: "ร้าน Robux ร้านค้าเพชร และระบบส่งของขวัญระหว่างผู้เล่น ทำมาให้ไม่มีการซื้อไหนหาย",
+      pts: ["Gift any product or gamepass to another player in the server",
+            "Purchase receipts are deferred if the gift target isn't loaded, so Roblox retries and nothing is lost",
+            "Checks the target's owned gamepasses first, and blocks gifting to yourself",
+            "Server-wide gift shoutouts, plus total and monthly Robux spend tracking",
+            "Gem merchant with a global stock that rotates every 30 minutes, synced across all servers",
+            "Per-player buy limits each rotation, saved in player data"],
+      tps: ["ส่งของหรือเกมพาสเป็นของขวัญให้ผู้เล่นคนอื่นในเซิร์ฟได้",
+            "ถ้าคนรับยังโหลดไม่เสร็จ ระบบจะเลื่อนใบเสร็จไว้ให้ Roblox ลองใหม่ การซื้อไม่มีทางหาย",
+            "เช็กก่อนว่าคนรับมีเกมพาสนั้นแล้วหรือยัง และส่งให้ตัวเองไม่ได้",
+            "ประกาศการส่งของขวัญทั้งเซิร์ฟ และเก็บยอดเติม Robux รวมและรายเดือน",
+            "ร้านค้าเพชรที่สต็อกเปลี่ยนทุก 30 นาที ซิงก์ตรงกันทุกเซิร์ฟเวอร์",
+            "จำกัดจำนวนซื้อต่อคนในแต่ละรอบ เซฟไว้ในข้อมูลผู้เล่น"] },
     { mp4: "https://i.gyazo.com/afab200b9b11d7ff93dfedb68dbd07b5.mp4", title: "Combat: M1 String + Parry", text: "Basic M1 combo string, parry timing and hit VFX.",
       th: "ต่อสู้: คอมโบ M1 + Parry", tt: "คอมโบ M1 พื้นฐาน จังหวะ Parry และ VFX ตอนโดนตี" },
     { mp4: "https://i.gyazo.com/1656b841fe416656e2b95d9dd14bd841.mp4", title: "Skill: Blood", text: "A blood skill with custom VFX.",
@@ -469,8 +625,6 @@
       th: "สกิล: สายฟ้าแบบสุคุนะ", tt: "นำ VFX สายฟ้ามาต่อเป็นสกิล จูนจังหวะฟ้าผ่า ฮิตบ็อกซ์ และเอฟเฟกต์ให้ตรงกัน" },
     { mp4: "https://i.gyazo.com/197b28c0d0ceb6b8c7cb65362426e7c5.mp4", tag: "wire", title: "Cutscreen: Mahoraga-style Summon", text: "Cinematic cut-in wired up: camera, timing and effects triggered on cue.",
       th: "คัตซีน: อัญเชิญแบบมาโฮรากะ", tt: "ต่อระบบคัตซีนเต็มจอ ทั้งกล้อง จังหวะ และเอฟเฟกต์ ให้เล่นตรงคิว" },
-    { id: "", title: "Map Build", text: "A mobile-friendly map, built and connected.",
-      th: "สร้างแมพ", tt: "แมพที่เล่นบนมือถือลื่น สร้างและเชื่อมระบบพร้อม" },
   ];
   /* ===================== */
 
@@ -486,20 +640,30 @@
       : w.img
       ?`<div class="vid"><a href="${w.img}" target="_blank" rel="noopener"><img src="${w.img}" alt="${w.title}" loading="lazy"${w.pos ? ` style="object-position:${w.pos}"` : ""}></a></div>`
       : w.id
-      ?`<div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(w.id)}" title="${w.title}" loading="lazy" allowfullscreen></iframe></div>`
+      ?`<div class="vid yt" data-yt="${encodeURIComponent(w.id)}" role="button" tabindex="0" aria-label="Play video: ${w.title}"><img src="https://i.ytimg.com/vi/${encodeURIComponent(w.id)}/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play"></span></div>`
       : `<div class="vid empty" data-th="เร็วๆ นี้">Coming soon</div>`;
     el.innerHTML = vid + `<div class="info"><h3></h3><p></p></div>`;
     const h = el.querySelector("h3"), p = el.querySelector("p");
     h.textContent = w.title; p.textContent = w.text;
     if (w.th) h.dataset.th = w.th;
     if (w.tt) p.dataset.th = w.tt;
+    if (w.pts) {
+      const box = document.createElement("details"); box.className = "more";
+      const sum = document.createElement("summary");
+      sum.innerHTML = '<span data-th="ดูจุดเด่น">Key features</span> <b>' + w.pts.length + '</b>';
+      box.appendChild(sum);
+      const ul = document.createElement("ul"); ul.className = "pts";
+      w.pts.forEach((s, i) => { const li = document.createElement("li"); li.textContent = s; if (w.tps && w.tps[i]) li.dataset.th = w.tps[i]; ul.appendChild(li); });
+      box.appendChild(ul);
+      el.querySelector(".info").appendChild(box);
+    }
     // tag: "wire" = their asset, I connected it. Anything else with a clip/picture = I made it.
     const kind = w.tag || ((w.mp4 || w.img) ? "make" : "");
     // filter groups, worked out from the English title
     const cats = [kind];
     if (kind) {   // placeholders ("Coming soon") only show under All
       if (/\bUI\b|Menu|Inventory/.test(w.title)) cats.push("ui");
-      if (/Inventory|Leaderboard|Dialogue/.test(w.title)) cats.push("systems");
+      if (/Inventory|Leaderboard|Dialogue|Shop|Gift|Saving|Roll|Weather|Security/.test(w.title)) cats.push("systems");
       if (/Combat|Skill|Weapon|Cutscreen/.test(w.title)) cats.push("combat");
     }
     el.dataset.cats = cats.filter(Boolean).join(" ");
@@ -513,6 +677,16 @@
     }
     grid.appendChild(el);
   }
+
+  // YouTube: show a thumbnail, load the player only on click (opens YouTube when embedding can't work)
+  function playYT(box) {
+    const id = box.dataset.yt;
+    if (location.protocol === "file:") { window.open("https://www.youtube.com/watch?v=" + id, "_blank", "noopener"); return; }
+    box.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" title="YouTube video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    box.classList.remove("yt");
+  }
+  grid.addEventListener("click", e => { const b = e.target.closest(".vid.yt"); if (b) playYT(b); });
+  grid.addEventListener("keydown", e => { const b = e.target.closest(".vid.yt"); if (b && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); playYT(b); } });
 
   // clip filters
   document.getElementById("filters").addEventListener("click", e => {
